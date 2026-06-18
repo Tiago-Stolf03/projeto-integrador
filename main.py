@@ -29,6 +29,7 @@ def voltar_menu():
     botao_cliente.place(rely=0.15, relx=0.5, anchor="center")
     botao_raca.place(rely=0.30, relx=0.5, anchor="center")
     botao_especie.place(rely=0.45, relx=0.5, anchor="center")
+    botao_sair.place(rely=0.75, relx=0.5, anchor="center")
 # ---------------------------------------------------------------------------------------------------------------------
 # botão cadastro espécie
 botao_especie = tk.Button( main_tela, padx=10, pady=10, text="Adicionar Espécie", 
@@ -56,7 +57,6 @@ botao_cliente = tk.Button( main_tela, padx=10, pady=10, text="Cadastrar Cliente"
     cliente_v2.abrir_cadastro_cliente(frame_main, voltar_menu) ]  )
 
 botao_cliente.place(rely=0.15, relx=0.5, anchor="center")
-
 
 botao_sair = tk.Button( main_tela, bg="firebrick", text="SAIR", pady=10, padx=30, command=lambda:main_tela.destroy())
 botao_sair.place(rely=0.75, relx=0.5, anchor="center")
