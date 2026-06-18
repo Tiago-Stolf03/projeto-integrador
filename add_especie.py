@@ -14,7 +14,7 @@ def validar_texto(texto):
           and len(texto) <= 40
      )
 
-def abrir_cadastro_especie(frame_especie):
+def abrir_cadastro_especie(frame_especie, voltar_menu):
 
     validador_nome_especie = (frame_especie.register(validar_texto), "%P")
 
@@ -39,9 +39,10 @@ def abrir_cadastro_especie(frame_especie):
         messagebox.showinfo("Sucesso", "Espécie cadastrada com sucesso!")
         
         # Limpa o frame depois de salvar para poder voltar à tela inicial
-        for widget in frame_especie.winfo_children():
-            widget.destroy()
-        frame_especie.pack_forget()
 
-    # cria o botão DENTRO do frame_pai
-    tk.Button(frame_especie, text="Salvar", font=("Times New Roman", 10, "bold"), command=salvar, bg="lightgreen").pack(pady=20)
+
+    # cria o botão DENTRO do frame_especie
+    tk.Button(frame_especie, text="Salvar", font=("Times New Roman", 12, "bold"), command=salvar, bg="lightgreen").pack(pady=20)
+
+    voltar_button = tk.Button(frame_especie, text="Voltar", bg="crimson" ,font=("Times New Roman", 14, "bold"),command=voltar_menu)
+    voltar_button.pack(pady=10)

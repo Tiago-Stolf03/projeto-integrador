@@ -22,8 +22,8 @@ def validar_texto(texto):
           all(caractere.isalpha() or caractere.isspace() for caractere in texto)
           and len(texto) <= 40
      )
-
-def abrir_cadastro_raca(frame_raca):
+# -------------------------------------------------------------------------------------------------------------------------------------------
+def abrir_cadastro_raca(frame_raca, voltar_menu):
     lista_especies = buscar_especies()
     nome_especies = [esp[1] for esp in lista_especies]
     id_especies = {esp[1]: esp[0] for esp in lista_especies}
@@ -35,15 +35,13 @@ def abrir_cadastro_raca(frame_raca):
         if especieID in id_especies:
             return campo_id_especie.config(text=f"{id_especies[especieID]}")
 
-    # cria a tela principal da tabela especie
-
     # registra a funcao validar texto na janela_especie
     validador_nome_raca = (frame_raca.register(validar_texto), "%P")
-
+# ---------------------------------------------------------------------------------------------------------------------
     # cria o titulo 
     titulo_janela = tk.Label(frame_raca, text= "Cadastro de Raças", font=("Times New Roman",12,"bold"))
     titulo_janela.pack(pady=30)
-
+# --------------------------------------------------------------------------------------------------------------------
     campo_especie_title = tk.Label(frame_raca, text= "Selecione uma Espécie", font=("Times New Roman",12))
     campo_especie_title.pack()
 
@@ -54,21 +52,21 @@ def abrir_cadastro_raca(frame_raca):
 
     campo_id_especie = tk.Label(frame_raca, text="")
     campo_id_especie.pack(pady=15)
-
+# --------------------------------------------------------------------------------------------------------------------
     campo_raca_title = tk.Label(frame_raca, text= "Digite uma Raça", font=("Times New Roman",12))
     campo_raca_title.pack()
 
     campo_raca = tk.Entry(frame_raca, validate="key", validatecommand=validador_nome_raca)
     campo_raca.pack(pady=10)
-
-    
+# ---------------------------------------------------------------------------------------------------------------------
     # cria a função que insere os valores do campo Entry no banco de dados
     def salvar():
-        # nome_selecionado = campo_especie.get() 
         id_da_especie = campo_id_especie.cget("text")
         raca = campo_raca.get()
 
         if not id_da_especie:
+            messagebox.showerror("Erro","Preencha todos os campos")
+        if not raca:
             messagebox.showerror("Erro","Preencha todos os campos")
 
         conn = conectar()
@@ -78,12 +76,9 @@ def abrir_cadastro_raca(frame_raca):
         conn.close()
         messagebox.showinfo("Sucesso", "Espécie cadastrada com sucesso!")
 
-        for widget in frame_raca.winfo_children():
-            widget.destroy()
-        frame_raca.pack_forget()
-
-
     # cria o botão que envia as informações digitadas para o banco de dados
-    tk.Button(frame_raca, text="Salvar",font=("Times New Roman",10,"bold"), command=salvar, bg="lightgreen").pack(pady=20)
+    tk.Button(frame_raca, text="Salvar",font=("Times New Roman",12,"bold"), command=salvar, bg="lightgreen").pack(pady=20)
 
+    voltar_button = tk.Button(frame_raca, text="Voltar", bg="crimson" ,font=("Times New Roman", 14, "bold"),command=voltar_menu)
+    voltar_button.pack(pady=10)
    

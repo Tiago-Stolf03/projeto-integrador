@@ -83,10 +83,10 @@ ent_telefone.bind("<KeyRelease>", formatar_telefone)
 
 
 def cadastrar():
-    nome_cliente = nome_cliente_entry.get().strip()
-    cpf = ent_cpf.get().strip()
-    endereco = endereco_entry.get().strip()
-    telefone = ent_telefone.get().strip()
+    nome_cliente = nome_cliente_entry.get()
+    cpf = ent_cpf.get()
+    endereco = endereco_entry.get()
+    telefone = ent_telefone.get()
 
     if not nome_cliente:
         messagebox.showwarning("Atenção", "O nome do cliente é obrigatório!")
@@ -119,4 +119,3 @@ frame_botoes.pack(pady=25)
 ttk.Button(frame_botoes, text="Cadastrar", command=cadastrar, width=15).pack(side=tk.LEFT, padx=10)
 ttk.Button(frame_botoes, text="Cancelar", command=root.destroy, width=15).pack(side=tk.LEFT, padx=10)
 
-root.mainloop()
