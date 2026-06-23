@@ -47,15 +47,18 @@ def cadastrar_usuario(id_usuario, login, senha):
 root = tk.Tk()
 root.title("Cadastro de Usuário")
 
+titulo =tk.Label(root, text=" Novo Usuário:", font=("Times New Roman", 12, "bold"))
+titulo.pack(pady=15)
+
 tk.Label(root, text="Login:").pack()
 login_entry = tk.Entry(root)
-login_entry.pack()
+login_entry.pack(pady=15)
 
 tk.Label(root, text="Senha:").pack()
 senha_entry = tk.Entry(root, show="*")
-senha_entry.pack()
+senha_entry.pack(pady=15)
 
-tk.Button(root, text="Cadastrar", command=lambda: cadastrar_usuario(None, login_entry.get(), senha_entry.get())).pack()
+tk.Button(root, text="Cadastrar", command=lambda: cadastrar_usuario(None, login_entry.get(), senha_entry.get())).pack(pady=10)
 
-root.geometry("400x500")
+root.geometry("350x300")
 root.mainloop()
