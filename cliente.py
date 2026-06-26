@@ -81,9 +81,7 @@ def abrir_cadastro_cliente(container, voltar, id_cliente=None):
 
     # Apenas letras
     def validar_apenas_letras(texto_inserido):
-        if any(char.isdigit() for char in texto_inserido):
-            return False
-        return True
+        return all(char.isalpha() or char.isspace() for char in texto_inserido)
 
     validador_nome = form_frame.register(validar_apenas_letras)
 

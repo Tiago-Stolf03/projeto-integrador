@@ -1,7 +1,8 @@
 import tkinter as tk
-import raca
 import especie
+import cliente
 import raca
+import pet
 import especie
 import adotar
 import datetime
@@ -73,10 +74,10 @@ def tela_menu_consulta():
     menu_frame = tk.Frame(container, bg=COR_BG)
     menu_frame.pack(fill="both", expand=True, padx=40, pady=20)
 
-    botoes = [("Pet", lambda: raca.abrir_consulta_pet(container, tela_menu_consulta)),
+    botoes = [("Pet", lambda: pet.abrir_consulta_pet(container, tela_menu_consulta)),
         ("Espécie", lambda: especie.abrir_consulta_especie(container, tela_menu_consulta)),
         ("Raça", lambda: raca.abrir_consulta_raca(container, tela_menu_consulta)),
-        ("Cliente", lambda: especie.abrir_consulta_cliente(container, tela_menu_consulta)),
+        ("Cliente", lambda: cliente.abrir_consulta_cliente(container, tela_menu_consulta)),
         ("Visualizar Adoções", lambda: adotar.abrir_consulta_adocao(container, tela_menu_consulta))
     ]
 
@@ -98,10 +99,10 @@ def tela_menu_cadastro():
     menu_frame.pack(fill="both", expand=True, padx=40, pady=20)
 
     botoes = [
-        ("Pet", lambda: raca.abrir_cadastro_pet(container, tela_menu_cadastro)),
+        ("Pet", lambda: pet.abrir_cadastro_pet(container, tela_menu_cadastro)),
         ("Espécie", lambda: especie.abrir_cadastro_especie(container, tela_menu_cadastro)),
         ("Raça", lambda: raca.abrir_cadastro_raca(container, tela_menu_cadastro)),
-        ("Cliente", lambda: especie.abrir_cadastro_cliente(container, tela_menu_cadastro)),
+        ("Cliente", lambda: cliente.abrir_cadastro_cliente(container, tela_menu_cadastro)),
         ("Registrar Adoções", lambda: adotar.abrir_cadastro_adocao(container, tela_menu_cadastro))
     ]
 
